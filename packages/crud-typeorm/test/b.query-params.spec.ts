@@ -923,6 +923,30 @@ describe('#crud-typeorm', () => {
           .expect(200);
         expect(res.body).toBeArrayOfSize(3);
       });
+      it('should return with $contArr search operator for `int` field', async () => {
+        const query = qb.search({ workDays: { $contArr: [6, 7] } }).query();
+        const res = await request(server)
+          .get('/users')
+          .query(query)
+          .expect(200);
+        expect(res.body).toBeArrayOfSize(2);
+      });
+      it('should return with $contArr search operator for `varchar` field', async () => {
+        const query = qb.search({ tags: { $contArr: ['FinTech', 'Web', 'Mobile'] } }).query();
+        const res = await request(server)
+          .get('/projects')
+          .query(query)
+          .expect(200);
+        expect(res.body).toBeArrayOfSize(1);
+      });
+      it('should return with $intersectsArr search operator', async () => {
+        const query = qb.search({ workDays: { $intersectsArr: [4, 5] } }).query();
+        const res = await request(server)
+          .get('/users')
+          .query(query)
+          .expect(200);
+        expect(res.body).toBeArrayOfSize(4);
+      });
       it("should throw an exception if custom search operator doesn't exist", async () => {
         const query = qb
           .search({ name: { $inexistentOperator: ['project7', 'project8', 'project9'] } })

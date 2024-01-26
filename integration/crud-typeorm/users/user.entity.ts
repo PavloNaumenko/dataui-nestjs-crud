@@ -66,6 +66,9 @@ export class User extends BaseEntity {
   @Column({ nullable: false })
   companyId?: number;
 
+  @Column({ type: 'int', array: true, nullable: false, default: [] })
+  workDays: number[];
+
   @DeleteDateColumn({ nullable: true })
   deletedAt?: Date;
 

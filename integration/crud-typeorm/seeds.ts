@@ -47,10 +47,10 @@ export class Seeds1544303473346 implements MigrationInterface {
 
     // projects
     await this.save(projectsRepo, [
-      { name: 'Project1', description: 'description1', isActive: true, companyId: 1 },
-      { name: 'Project2', description: 'description2', isActive: true, companyId: 1 },
-      { name: 'Project3', description: 'description3', isActive: true, companyId: 2 },
-      { name: 'Project4', description: 'description4', isActive: true, companyId: 2 },
+      { name: 'Project1', description: 'description1', isActive: true, companyId: 1, tags: ['FinTech', 'Web'] },
+      { name: 'Project2', description: 'description2', isActive: true, companyId: 1, tags: ['HealthTech', 'Web', 'Mobile'] },
+      { name: 'Project3', description: 'description3', isActive: true, companyId: 2, tags: ['InsurTech', 'Web', 'Mobile'] },
+      { name: 'Project4', description: 'description4', isActive: true, companyId: 2, tags: ['FinTech', 'Web', 'Mobile']  },
       { name: 'Project5', description: 'description5', isActive: true, companyId: 3 },
       { name: 'Project6', description: 'description6', isActive: true, companyId: 3 },
       { name: 'Project7', description: 'description7', isActive: true, companyId: 4 },
@@ -97,11 +97,11 @@ export class Seeds1544303473346 implements MigrationInterface {
     const name: Name = { first: null, last: null };
     const name1: Name = { first: 'firstname1', last: 'lastname1' };
     await this.save(usersRepo, [
-      { email: '1@email.com', isActive: true, companyId: 1, profileId: 1, name: name1 },
-      { email: '2@email.com', isActive: true, companyId: 1, profileId: 2, name },
-      { email: '3@email.com', isActive: true, companyId: 1, profileId: 3, name },
-      { email: '4@email.com', isActive: true, companyId: 1, profileId: 4, name },
-      { email: '5@email.com', isActive: true, companyId: 1, profileId: 5, name },
+      { email: '1@email.com', isActive: true, companyId: 1, profileId: 1, name: name1, workDays: [6, 7] },
+      { email: '2@email.com', isActive: true, companyId: 1, profileId: 2, name, workDays: [5, 6 ,7] },
+      { email: '3@email.com', isActive: true, companyId: 1, profileId: 3, name, workDays: [1 ,2, 5]  },
+      { email: '4@email.com', isActive: true, companyId: 1, profileId: 4, name, workDays: [1 ,2, 3, 4, 5] },
+      { email: '5@email.com', isActive: true, companyId: 1, profileId: 5, name, workDays: [1 ,2, 3, 4, 5] },
       { email: '6@email.com', isActive: true, companyId: 1, profileId: 6, name },
       { email: '7@email.com', isActive: false, companyId: 1, profileId: 7, name },
       { email: '8@email.com', isActive: false, companyId: 1, profileId: 8, name },

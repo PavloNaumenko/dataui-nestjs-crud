@@ -39,6 +39,8 @@ export class Project extends BaseEntity {
   @Column({ nullable: false })
   companyId?: number;
 
+  @Column({ type: 'varchar', array: true, default: [] })
+  tags: string[];
   /**
    * Relations
    */
